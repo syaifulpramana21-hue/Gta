@@ -118,7 +118,9 @@ function draw(){
 
     drawMap(ctx, world);
 
-    drawPlayer();
+drawCars(ctx);
+
+drawPlayer();
 
     ctx.restore();
 

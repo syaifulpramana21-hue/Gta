@@ -1,17 +1,61 @@
 // Sistem kendaraan
-
 const cars = [
 {
     x:1600,
     y:1500,
     width:60,
     height:30,
-    color:"#e53935"
+    color:"#e53935",
+
+    angle:0,
+    speed:0,
+
+    maxSpeed:280,
+    accel:260,
+    brake:320,
+    turn:3,
+
+    driver:false
 }
 ];
 
-function drawCars(ctx){
 
+    function updateCars(dt){
+
+    for(const car of cars){
+
+        if(!car.driver) continue;
+
+        if(keys["w"]){
+            car.speed+=car.accel*dt;
+        }
+
+        if(keys["s"]){
+            car.speed-=car.brake*dt;
+        }
+
+        if(keys["a"]){
+            car.angle-=car.turn*dt;
+        }
+
+        if(keys["d"]){
+            car.angle+=car.turn*dt;
+        }
+
+        car.speed*=0.98;
+
+        if(car.speed>car.maxSpeed)
+            car.speed=car.maxSpeed;
+
+        if(car.speed<-car.maxSpeed/2)
+            car.speed=-car.maxSpeed/2;
+
+        car.x+=Math.cos(car.angle)*car.speed*dt;
+        car.y+=Math.sin(car.angle)*car.speed*dt;
+
+    }
+
+    }
     for(const car of cars){
 
         // badan mobil

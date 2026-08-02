@@ -116,13 +116,7 @@ function draw(){
 
     ctx.translate(-camera.x,-camera.y);
 
-    ctx.fillStyle="#2e8b57";
-
-    ctx.fillRect(0,0,world.width,world.height);
-
-    drawGrid();
-
-    drawRoad();
+    drawMap(ctx, world);
 
     drawPlayer();
 
